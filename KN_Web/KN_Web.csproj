@@ -134,14 +134,13 @@
     <Content Include="Template\css\lineicons.css" />
     <Content Include="Template\css\main.css" />
     <Content Include="Template\css\materialdesignicons.min.css" />
-    <Content Include="Template\Images\favicon.svg" />
     <Content Include="Template\Images\logo.svg" />
+    <Content Include="Template\Images\profile-image.png" />
     <Content Include="Template\js\bootstrap.bundle.min.js" />
     <Content Include="Template\js\Chart.min.js" />
     <Content Include="Template\js\dynamic-pie-chart.js" />
     <Content Include="Template\js\fullcalendar.js" />
     <Content Include="Template\js\jvectormap.min.js" />
-    <Content Include="Template\js\loading-bar.min.js" />
     <Content Include="Template\js\main.js" />
     <Content Include="Template\js\moment.min.js" />
     <Content Include="Template\js\polyfill.js" />
@@ -167,6 +166,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Template\fonts\lineicons.ttf" />
+    <Content Include="Template\fonts\lineicons.woff" />
+    <Content Include="Template\fonts\lineicons.woff2" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
