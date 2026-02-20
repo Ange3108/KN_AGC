@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blank Page | PlainAdmin Demo</title>
+    <title>KN Web</title>
 
     <!-- ========== All CSS files linkup ========= -->
     <link href="~/Template/css/bootstrap.min.css" rel="stylesheet" />
@@ -13,8 +14,11 @@
     <link href="~/Template/css/fullcalendar.css" rel="stylesheet" />
     <link href="~/Template/css/main.css" rel="stylesheet" />
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
 </head>
-<body>
+<body class="body-color">
 
     <div id="preloader">
         <div class="spinner"></div>
@@ -29,7 +33,7 @@
                         <div class="header-left d-flex align-items-center">
                             <div class="menu-toggle-btn mr-15">
                                 <div class="navbar-logo">
-                                    <a href="index.html">
+                                    <a href="@Url.Action("Login","Home")">
                                         <img src="~/Template/images/logo.svg" />
                                     </a>
                                 </div>
@@ -41,44 +45,10 @@
         </header>
 
         <section class="section">
-            <div class="container-fluid">
-                <div class="title-wrapper pt-30">
-                    <div class="row align-items-center">
-                        <div class="col-md-12">
-                            <div class="title">
-
-                                @RenderBody()
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+            <div class="title-wrapper">
+                @RenderBody()
             </div>
         </section>
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6 order-last order-md-first">
-                        <div class="copyright text-center text-md-start">
-                            <p class="text-sm">
-                                Designed and Developed by
-                                <a href="https://plainadmin.com" rel="nofollow" target="_blank">
-                                    PlainAdmin
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="terms d-flex justify-content-center justify-content-md-end">
-                            <a href="#0" class="text-sm">Term & Conditions</a>
-                            <a href="#0" class="text-sm ml-15">Privacy & Policy</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
     </main>
 
     <!-- ========= All Javascript files linkup ======== -->
@@ -91,6 +61,8 @@
     <script src="~/Template/js/world-merc.js"></script>
     <script src="~/Template/js/polyfill.js"></script>
     <script src="~/Template/js/main.js"></script>
+
+  
 
 </body>
 </html>

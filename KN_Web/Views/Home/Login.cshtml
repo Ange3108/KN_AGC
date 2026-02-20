@@ -6,13 +6,12 @@
 }
 
 <!-- ========== title-wrapper end ========== -->
-
-<div class="row g-0 auth-row mt-5 me-5">
+<div class="row g-0 auth-row mt-3 me-3">
     <div class="col-lg-6">
         <div class="auth-cover-wrapper bg-primary-100">
             <div class="auth-cover">
                 <div class="title text-center">
-                    <h1 class="text-primary mb-10">Welcome Back</h1>
+                    <h1 class="text-primary mb-10">Bienvenid@@</h1>
                     <p class="text-medium">
                         Inicia sesión para continuar
                     </p>
@@ -30,24 +29,28 @@
     <div class="col-lg-6">
         <div class="signin-wrapper">
             <div class="form-wrapper">
+
                 <h3 class="mb-15">Inciar Sesión</h3>
 
-                @using (Html.BeginForm("Login", "Home"))
-                { }
+                @using (Html.BeginForm("Login", "Home", FormetMethod.Post, new {@id="FormLogin"}))
+                {
                 <div class="row">
                     <div class="col-12">
                         <div class="input-style-1">
-                            <label>Identificación</label>
-                            @Html.TextBoxFor(m => m.Identificacion, new { @placeholder = "Identificación" })
+                            <label>Correo Electrónico</label>
+                            @Html.TextBoxFor(m => m.CorreoElectronico, new { @placeholder = "Correo Electrónico" })
                         </div>
                     </div>
+
 
                     <div class="col-12">
 
                         <div class="input-style-1">
                             <label>Contraseña</label>
                             @Html.TextBoxFor(m => m.Contrasena, new { @type = "password", @placeholder = "Contraseña" })
-
+                            <div class="text-danger w-100">
+                                @ViewBag.Mensaje
+                            </div>
                         </div>
                     </div>
 
@@ -79,3 +82,4 @@
     </div>
 </div>
 <!-- ========== signin-section end ========== -->
+<script src="~/Template/js/funciones/login.js"></script>
