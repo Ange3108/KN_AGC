@@ -1,9 +1,6 @@
 ﻿using KN_Web.EntityFramework;
 using KN_Web.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace KN_Web.Controllers
@@ -22,32 +19,37 @@ namespace KN_Web.Controllers
         // GET: es para abrir la vista, POST: es para enviar los datos del formulario
         public ActionResult Login()
         {
-           
-            
+
+
             return View();
         }
 
         [HttpPost]
         public ActionResult Login(UsuarioModel modelo)
         {
-            using (var context = new KN_DBEntities())
+            using (var context = new KN_DBEntities1())
             {
-                var result = context.tUsuario.Where(p => p.CorreoElectronico == modelo.CorreoElectronico
-                                                       && p.Contrasena == modelo.Contrasena
-                                                       && p.Estado).FirstOrDefault();
-                                                        //el firstordefault solo devuelve un resultado, si no encuentra nada devuelve null
 
-                var result = context.IniciarSesion(modelo.Identificacion, modelo.Contrasena).FirstOrDefault();
+                //---------Linq-----------
+                //var result = context.tUsuario.Where(p => p.CorreoElectronico == modelo.CorreoElectronico
+                //      && p.Contrasena == modelo.Contrasena
+                //       && p.Estado).FirstOrDefault();
+                //el firstordefault solo devuelve un resultado, si no encuentra nada devuelve null
+
+
+
+                //procedimiento almacenado
+                //se enfocan en sistemas pequeños, para sistemas grandes se recomienda usar el enfoque sin procedimientos almacenados
+                var result = context.IniciarSesion(modelo.CorreoElectronico, modelo.Contrasena).FirstOrDefault();
 
                 if (result == null)
                 {
-                    ViewBag.Mensaje = "Usuario o contraseña incorrecta.";
+                    ViewBag.Mensaje = "Su infromacion no se autentico";
                     return View();
                 }
-
+                Session["Nombre"] = result.Nombre;
                 return RedirectToAction("Index", "Home");
             }
-
 
         }
 
@@ -67,46 +69,54 @@ namespace KN_Web.Controllers
 
             //delimitador de la base de datos, para abrir la conexión, realizar las operaciones y cerrar la conexión
             //context es el objeto que representa la conexión a la base de datos
-            using (var context = new KN_DBEntities())
+            using (var context = new KN_DBEntities1())
             {
-                var tabla = new tUsuario
+                //----------Linq-----------
+                //context.tUsuario.Add(new tUsuario
+                //{
+                //    Identificacion = model.Identificacion,
+                //    Nombre = model.Nombre,
+                //    Contrasena = model.Contrasena,
+                //    CorreoElectronico = model.CorreoElectronico,
+                //    Estado = true
+                //});
+
+                //context.tUsuario.Add(tabla); //agregar el objeto tabla a la tabla tUsuario
+                //context.SaveChanges(); //guardar los cambios en la base de datos
+                
+
+                //procedimiento almacenado
+                var result = context.RegistrarUsuario(model.Identificacion, model.Contrasena, model.Nombre, model.CorreoElectronico);
+
+                if (result <= 0)
                 {
+                    ViewBag.Mensaje = "Su información no se registró correctamente";
+                    return View();
+                }
 
-                    Identificacion = model.Identificacion,
-                    Nombre = model.Nombre,
-                    Contrasena = model.Contrasena
-
-                    //crear una instancia de la tabla tUsuario
-
-
-                };
-                context.tUsuario.Add(tabla); //agregar el objeto tabla a la tabla tUsuario
-                context.SaveChanges(); //guardar los cambios en la base de datos
-
+                return RedirectToAction("Login", "Home");
             }
-
-                return View();
-            
+           
         }
 
-            #endregion
+        #endregion
 
         #region Recuperar Contraseña
 
-           [HttpGet]
-           public ActionResult RecuperarContrasena()
-            {
-                return View();
-            }
+        [HttpGet]
+        public ActionResult RecuperarContrasena()
+        {
+            return View();
+        }
 
-            [HttpPost]
-            public ActionResult RecuperarContrasena(UsuarioModel modelo)
-            {
-                return View();
-            }
+        [HttpPost]
+        public ActionResult RecuperarContrasena(UsuarioModel modelo)
+        {
+            return View();
+        }
 
-            #endregion
+        #endregion
 
-        
+
     }
 }

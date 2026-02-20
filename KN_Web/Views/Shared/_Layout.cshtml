@@ -1,4 +1,7 @@
 ﻿
+@{
+    var nombre = Session["Nombre"].ToString();
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +36,7 @@
         </div>
         <nav class="sidebar-nav">
             <ul>
-                
+
                 <li class="nav-item">
                     <a href="invoice.html">
                         <span class="icon">
@@ -83,30 +86,13 @@
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                     <div class="profile-info">
                                         <div class="info">
-                                            <div class="image">
-                                                <img src="~/Template/Images/profile-image.png" />
-                                            </div>
                                             <div>
-                                                <h6 class="fw-500">Adam Joe</h6>
-                                                <p>Admin</p>
+                                                <h6 class="fw-500">@nombre</h6>
                                             </div>
                                         </div>
                                     </div>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
-                                    <li>
-                                        <div class="author-info flex items-center !p-1">
-                                            <div class="image"> 
-                                                <img src="~/Template/Images/profile-image.png" />
-                                            </div>
-                                            <div class="content">
-                                                <h4 class="text-sm">Adam Joe</h4>
-                                                <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs"
-                                                   href="#">Email@gmail.com</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="divider"></li>
                                     <li>
                                         <a href="#0">
                                             <i class="lni lni-user"></i> View Profile
@@ -146,7 +132,7 @@
                             <div class="title">
 
                                 @RenderBody()
-                                
+
                             </div>
                         </div>
                         <!-- end col -->
@@ -184,15 +170,15 @@
                                 </a>
                             </p>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="col-md-6">
                         <div class="terms d-flex justify-content-center justify-content-md-end">
                             <a href="#0" class="text-sm">Term & Conditions</a>
                             <a href="#0" class="text-sm ml-15">Privacy & Policy</a>
                         </div>
                     </div>
-                </div>               
-            </div>           
+                </div>
+            </div>
         </footer>
     </main>
 

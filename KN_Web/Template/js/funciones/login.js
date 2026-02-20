@@ -16,7 +16,7 @@ $(function () {
         messages: {
             CorreoElectronico: {
                 required: "Campo requerido",
-                email: "Ingrese un correo electrónico válido"
+                email: "Formato Incorrecto"
             },
             Contrasena: {
                 required: "Campo requerido"

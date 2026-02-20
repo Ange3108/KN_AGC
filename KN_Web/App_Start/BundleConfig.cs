@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace KN_Web
 {
@@ -9,5 +8,5 @@ namespace KN_Web
         public static void RegisterBundles(BundleCollection bundles)
         {
         }
-        }
+    }
 }

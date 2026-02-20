@@ -32,44 +32,43 @@
 
                 <h3 class="mb-15">Inciar Sesión</h3>
 
-                @using (Html.BeginForm("Login", "Home", FormetMethod.Post, new {@id="FormLogin"}))
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @id = "FormLogin" }))
                 {
-                <div class="row">
-                    <div class="col-12">
-                        <div class="input-style-1">
-                            <label>Correo Electrónico</label>
-                            @Html.TextBoxFor(m => m.CorreoElectronico, new { @placeholder = "Correo Electrónico" })
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-style-1">
+                                <label>Correo Electrónico</label>
+                                @Html.TextBoxFor(m => m.CorreoElectronico, new { @placeholder = "Correo Electrónico" })
+                            </div>
                         </div>
-                    </div>
 
+                        <div class="col-12">
+                            <div class="input-style-1">
+                                <label>Contraseña</label>
+                                @Html.TextBoxFor(m => m.Contrasena, new { @type = "password", @placeholder = "Contraseña" })
 
-                    <div class="col-12">
+                                <div class="text-danger w-100">
+                                    @ViewBag.Mensaje
+                                </div>
+                            </div>
+                        </div>
 
-                        <div class="input-style-1">
-                            <label>Contraseña</label>
-                            @Html.TextBoxFor(m => m.Contrasena, new { @type = "password", @placeholder = "Contraseña" })
-                            <div class="text-danger w-100">
-                                @ViewBag.Mensaje
+                        <div class="col-xxl-12 col-lg-12 col-md-12">
+                            <div class="text-start text-md-end text-lg-start text-xxl-end mb-30">
+                                <a href="@Url.Action("RecuperarContrasena","Home")" class="hover-underline">
+                                    Olvidó su contraseña?
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="button-group d-flex justify-content-center flex-wrap">
+                                <button type="submit" class="main-btn primary-btn btn-hover w-100 text-center">
+                                    Procesar
+                                </button>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-xxl-12 col-lg-12 col-md-12">
-                        <div class="text-start text-md-end text-lg-start text-xxl-end mb-30">
-                            <a href="@Url.Action("RecuperarContrasenna","Home")" class="hover-underline">
-                                Olvidó su contraseña?
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="button-group d-flex justify-content-center flex-wrap">
-                            <button type="submit" class="main-btn primary-btn btn-hover w-100 text-center">
-                                Procesar
-                            </button>
-                        </div>
-                    </div>
-                </div>
                 }
                 <div class="singin-option pt-40">
                     <p class="text-sm text-medium text-dark text-center">
