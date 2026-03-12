@@ -15,10 +15,10 @@ namespace KN_Web.EntityFramework
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class KN_DBEntities1 : DbContext
+    public partial class KN_DBEntities : DbContext
     {
-        public KN_DBEntities1()
-            : base("name=KN_DBEntities1")
+        public KN_DBEntities()
+            : base("name=KN_DBEntities")
         {
         }
     
@@ -28,6 +28,21 @@ namespace KN_Web.EntityFramework
         }
     
         public virtual DbSet<tUsuario> tUsuario { get; set; }
+        public virtual DbSet<tRol> tRol { get; set; }
+        public virtual DbSet<tServicios> tServicios { get; set; }
+    
+        public virtual int ActualizarContrasena(string contrasena, Nullable<int> consecutivo)
+        {
+            var contrasenaParameter = contrasena != null ?
+                new ObjectParameter("Contrasena", contrasena) :
+                new ObjectParameter("Contrasena", typeof(string));
+    
+            var consecutivoParameter = consecutivo.HasValue ?
+                new ObjectParameter("Consecutivo", consecutivo) :
+                new ObjectParameter("Consecutivo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarContrasena", contrasenaParameter, consecutivoParameter);
+        }
     
         public virtual ObjectResult<IniciarSesion_Result> IniciarSesion(string correoElectronico, string contrasena)
         {
@@ -61,6 +76,15 @@ namespace KN_Web.EntityFramework
                 new ObjectParameter("CorreoElectronico", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistrarUsuario", identificacionParameter, contrasenaParameter, nombreParameter, correoElectronicoParameter);
+        }
+    
+        public virtual ObjectResult<ValidarCorreo_Result> ValidarCorreo(string correoElectronico)
+        {
+            var correoElectronicoParameter = correoElectronico != null ?
+                new ObjectParameter("CorreoElectronico", correoElectronico) :
+                new ObjectParameter("CorreoElectronico", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarCorreo_Result>("ValidarCorreo", correoElectronicoParameter);
         }
     }
 }

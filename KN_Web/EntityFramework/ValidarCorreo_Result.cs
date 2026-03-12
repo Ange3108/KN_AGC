@@ -10,18 +10,12 @@
 namespace KN_Web.EntityFramework
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tUsuario
+    public partial class ValidarCorreo_Result
     {
         public int Consecutivo { get; set; }
         public string Identificacion { get; set; }
-        public string Contrasena { get; set; }
-        public string Nombre { get; set; }
         public string CorreoElectronico { get; set; }
-        public bool Estado { get; set; }
-        public Nullable<int> ConsecutivoRol { get; set; }
-    
-        public virtual tRol tRol { get; set; }
+        public string Nombre { get; set; }
     }
 }

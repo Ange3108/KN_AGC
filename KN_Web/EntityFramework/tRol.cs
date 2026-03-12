@@ -12,16 +12,18 @@ namespace KN_Web.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class tUsuario
+    public partial class tRol
     {
-        public int Consecutivo { get; set; }
-        public string Identificacion { get; set; }
-        public string Contrasena { get; set; }
-        public string Nombre { get; set; }
-        public string CorreoElectronico { get; set; }
-        public bool Estado { get; set; }
-        public Nullable<int> ConsecutivoRol { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tRol()
+        {
+            this.tUsuario = new HashSet<tUsuario>();
+        }
     
-        public virtual tRol tRol { get; set; }
+        public int Consecutivo { get; set; }
+        public string Descripcion { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tUsuario> tUsuario { get; set; }
     }
 }
