@@ -1,4 +1,5 @@
 ﻿using KN_Web.EntityFramework;
+using KN_Web.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +8,17 @@ using System.Web.Mvc;
 
 namespace KN_Web.Controllers
 {
-    public class ServicioController
+    [SesionActiva]
+    public class ServicioController : Controller
     {
+        
         [HttpGet]
         public ActionResult ConsultarServicios()
         {
             using (var context = new KN_DBEntities())
             {
                 var result = context.tServicio.Where(p => p.Estado == 1).ToList();
-                return View (result);
+                return View(result);
             }
         }
     }

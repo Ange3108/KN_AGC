@@ -1,6 +1,6 @@
 ﻿
 @{
-    var nombre = Session["Nombre"].ToString();
+    var nombre = Session["Nombre"] ?? String.Empty;
 }
 
 <!DOCTYPE html>
@@ -18,6 +18,14 @@
     <link href="~/Template/css/lineicons.css" rel="stylesheet" />
     <link href="~/Template/css/main.css" rel="stylesheet" />
     <link href="~/Template/css/materialdesignicons.min.css" rel="stylesheet" />
+
+    <link href="https://cdn.datatables.net/2.3.7/css/dataTables.bootstrap5.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.12/dist/jquery.validate.unobtrusive.min.js"></script>
+
 </head>
 <body>
 
@@ -95,23 +103,15 @@
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
                                     <li>
                                         <a href="#0">
-                                            <i class="lni lni-user"></i> View Profile
+                                            <i class="lni lni-user"></i> Perfil
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#0">
-                                            <i class="lni lni-alarm"></i> Notifications
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
-                                    </li>
-                                    <li>
-                                        <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
+                                        <a href="@Url.Action("CambiarAcceso","Seguridad")"> <i class="lni lni-cog"></i> Seguridad </a>
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                                        <a href="@Url.Action("CerrarSesion","Home")"> <i class="lni lni-exit"></i> Salir </a>
                                     </li>
                                 </ul>
                             </div>

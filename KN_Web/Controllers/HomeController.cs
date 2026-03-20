@@ -1,4 +1,5 @@
 ﻿using KN_Web.EntityFramework;
+using KN_Web.Filters;
 using KN_Web.Models;
 using System;
 using System.Configuration;
@@ -14,6 +15,7 @@ namespace KN_Web.Controllers
 {
     public class HomeController : Controller
     {
+        [SesionActiva]
         [HttpGet]
         public ActionResult Index()
         {
@@ -158,6 +160,22 @@ namespace KN_Web.Controllers
         }
 
         #endregion
+
+        #region Cerrar Sesión
+
+        [SesionActiva]
+        [HttpGet]
+        public ActionResult CerrarSesion()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Home");
+        }
+
+        #endregion
+
+
+
+
         private string GenerarContrasena()
         {
             int longitud = 8;

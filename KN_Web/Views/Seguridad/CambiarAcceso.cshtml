@@ -1,0 +1,53 @@
+﻿@model KN_Web.Models.SeguridadModel
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="section-title mb-3">
+            <h4>Cambiar Contraseña</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card-style">
+
+            @if (ViewBag.Mensaje != null)
+            {
+                <div class="alert alert-success">@ViewBag.Mensaje</div>
+            }
+
+            @using (Html.BeginForm("CambiarAcceso", "Seguridad", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-style-1">
+                            <label>Contraseña Nueva</label>
+                            @Html.PasswordFor(m => m.ContrasenaNueva, new { @placeholder = "Contraseña nueva" })
+                            @Html.ValidationMessageFor(m => m.ContrasenaNueva, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="input-style-1">
+                            <label>Confirmar Contraseña</label>
+                            @Html.PasswordFor(m => m.ConfirmarContrasena, new { @placeholder = "Confirmar contraseña" })
+                            @Html.ValidationMessageFor(m => m.ConfirmarContrasena, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <div class="button-group d-flex justify-content-end">
+                            <button type="submit" class="main-btn primary-btn btn-hover btn-sm">
+                                Actualizar Contraseña
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
