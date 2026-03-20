@@ -19,8 +19,9 @@ namespace KN_Web.EntityFramework
         public string Contrasena { get; set; }
         public string Nombre { get; set; }
         public string CorreoElectronico { get; set; }
-        public bool Estado { get; set; }
-        public Nullable<int> ConsecutivoRol { get; set; }
+        public int Estado { get; set; }
+        public int ConsecutivoRol { get; set; }
+        public string ImagenUsuario { get; set; }
     
         public virtual tRol tRol { get; set; }
     }

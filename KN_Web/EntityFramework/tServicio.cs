@@ -12,7 +12,7 @@ namespace KN_Web.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class tServicios
+    public partial class tServicio
     {
         public int Consecutivo { get; set; }
         public string Nombre { get; set; }

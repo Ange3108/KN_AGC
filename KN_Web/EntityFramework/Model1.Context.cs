@@ -27,9 +27,9 @@ namespace KN_Web.EntityFramework
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tUsuario> tUsuario { get; set; }
         public virtual DbSet<tRol> tRol { get; set; }
-        public virtual DbSet<tServicios> tServicios { get; set; }
+        public virtual DbSet<tServicio> tServicio { get; set; }
+        public virtual DbSet<tUsuario> tUsuario { get; set; }
     
         public virtual int ActualizarContrasena(string contrasena, Nullable<int> consecutivo)
         {

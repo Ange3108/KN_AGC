@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f0760999933047fe98902e0d787a6f2b" Name="Diagram1">
-        <EntityTypeShape EntityType="KN_DBModel.tUsuario" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KN_DBModel.tRol" Width="1.5" PointX="0.75" PointY="5.25" />
-        <EntityTypeShape EntityType="KN_DBModel.tServicios" Width="1.5" PointX="3.375" PointY="0.75" />
-        <AssociationConnector Association="KN_DBModel.FK_tUsuario_tRol" />
+      <Diagram DiagramId="def5d5b54e534614b59c5f9dd4e29516" Name="Diagram1">
+        <EntityTypeShape EntityType="KN_DBModel.tRol" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KN_DBModel.tServicio" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KN_DBModel.tUsuario" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="KN_DBModel.FK_tUsuario_tRol" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
