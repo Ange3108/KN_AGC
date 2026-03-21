@@ -166,8 +166,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PerfilModel.cs" />
+    <Compile Include="Models\SeguridadModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Generales.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="EntityFramework\Model1.Context.tt">
@@ -194,15 +197,18 @@
     <Content Include="Template\Images\shape.svg" />
     <Content Include="Template\Images\signin-image.svg" />
     <Content Include="Template\js\bootstrap.bundle.min.js" />
+    <Content Include="Template\js\funciones\cambiarPerfil.js" />
     <Content Include="Template\js\Chart.min.js" />
     <Content Include="Template\js\dynamic-pie-chart.js" />
     <Content Include="Template\js\fullcalendar.js" />
+    <Content Include="Template\js\funciones\consultaServicios.js" />
     <Content Include="Template\js\funciones\RecuperarContraseña.js" />
     <Content Include="Template\js\funciones\registro.js" />
     <Content Include="Template\js\jvectormap.min.js" />
     <Content Include="Template\js\funciones\login.js" />
     <Content Include="Template\js\main.js" />
     <Content Include="Template\js\moment.min.js" />
+    <Content Include="Template\NotificarContrasena.html" />
     <Content Include="Template\js\polyfill.js" />
     <Content Include="Template\js\world-merc.js" />
     <Content Include="Template\RecuperarContrasena.html" />
@@ -217,8 +223,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -235,12 +239,15 @@
     <Content Include="Template\fonts\lineicons.ttf" />
     <Content Include="Template\fonts\lineicons.woff" />
     <Content Include="Template\fonts\lineicons.woff2" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutExterno.cshtml" />
-    <Content Include="Views\Home\Registro.cshtml" />
-    <Content Include="Views\Home\RecuperarContrasena.cshtml" />
     <Content Include="Views\Servicio\ConsultarServicios.cshtml" />
     <Content Include="Views\Seguridad\CambiarAcceso.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\RecuperarContrasena.cshtml" />
+    <Content Include="Views\Home\Registro.cshtml" />
+    <Content Include="Views\Seguridad\CambiarPerfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

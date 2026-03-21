@@ -17,7 +17,7 @@ namespace KN_Web.Controllers
         {
             using (var context = new KN_DBEntities())
             {
-                var result = context.tServicio.Where(p => p.Estado == 1).ToList();
+                var result = context.tServicio.ToList();
                 return View(result);
             }
         }

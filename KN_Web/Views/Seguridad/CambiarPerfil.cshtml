@@ -1,0 +1,68 @@
+﻿@model KN_Web.Models.PerfilModel
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="section-title mb-3">
+            <h4>Información Personal</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card-style">
+
+            @if (ViewBag.Mensaje != null)
+            {
+                <div class="alert alert-success">@ViewBag.Mensaje</div>
+            }
+
+            @using (Html.BeginForm("CambiarPerfil", "Seguridad", FormMethod.Post, new { enctype = "multipart/form-data", @id = "FormPerfil" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-style-1">
+                            <label>Identificación</label>
+                            @Html.TextBoxFor(m => m.Identificacion, new { @placeholder = "Identificación", @onkeyup = "ConsultarNombre()" })
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="input-style-1">
+                            <label>Nombre</label>
+                            @Html.TextBoxFor(m => m.Nombre, new { @placeholder = "Nombre", @readOnly = "true", @class = "SoloLectura" })
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="input-style-1">
+                            <label>Correo Electrónico</label>
+                            @Html.TextBoxFor(m => m.CorreoElectronico, new { @placeholder = "Correo Electrónico" })
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="input-style-1">
+                            <label>Imagen </label>
+                            <input type="file" id="ImagenUsuario" name="ImagenUsuario">
+                        </div>
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <div class="button-group d-flex justify-content-end">
+                            <button type="submit" class="main-btn primary-btn btn-hover btn-sm">
+                                Actualizar Perfil
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Template/js/funciones/cambiarPerfil.js"></script>

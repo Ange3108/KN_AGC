@@ -1,6 +1,7 @@
 ﻿
 @{
     var nombre = Session["Nombre"] ?? String.Empty;
+    var imagen = Session["ImagenUsuario"] ?? "/Uploads/default.png";
 }
 
 <!DOCTYPE html>
@@ -97,12 +98,13 @@
                                             <div>
                                                 <h6 class="fw-500">@nombre</h6>
                                             </div>
+                                            <img src="@imagen" />
                                         </div>
                                     </div>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
                                     <li>
-                                        <a href="#0">
+                                        <a href="@Url.Action("CambiarPerfil","Seguridad")">
                                             <i class="lni lni-user"></i> Perfil
                                         </a>
                                     </li>
@@ -169,6 +171,9 @@
     <script src="~/Template/js/moment.min.js"></script>
     <script src="~/Template/js/polyfill.js"></script>
     <script src="~/Template/js/world-merc.js"></script>
+
+    <script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.3.7/js/dataTables.bootstrap5.js"></script>
 
 </body>
 </html>

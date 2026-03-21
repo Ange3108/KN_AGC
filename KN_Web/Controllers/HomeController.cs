@@ -1,6 +1,7 @@
 ﻿using KN_Web.EntityFramework;
 using KN_Web.Filters;
 using KN_Web.Models;
+using KN_Web.Services;
 using System;
 using System.Configuration;
 using System.IO;
@@ -15,6 +16,8 @@ namespace KN_Web.Controllers
 {
     public class HomeController : Controller
     {
+        readonly Generales generales = new Generales();
+
         [SesionActiva]
         [HttpGet]
         public ActionResult Index()
@@ -56,7 +59,10 @@ namespace KN_Web.Controllers
                     ViewBag.Mensaje = "Su infromacion no se autentico";
                     return View();
                 }
+                Session["Consecutivo"] = result.Consecutivo;
                 Session["Nombre"] = result.Nombre;
+                Session["CorreoElectronico"] = result.CorreoElectronico;
+                Session["ImagenUsuario"] = result.ImagenUsuario;
                 return RedirectToAction("Index", "Home");
             }
 
@@ -130,9 +136,9 @@ namespace KN_Web.Controllers
                     ViewBag.Mensaje = "Su información no se validó correctamente";
                     return View();
                 }
-               
+
                 //enviar correo con la nueva contraseña
-                var nuevaContrasena= GenerarContrasena();
+                var nuevaContrasena = generales.GenerarContrasena();
 
                 //Se actualiza la contraseña en la base de datos
 
@@ -152,7 +158,7 @@ namespace KN_Web.Controllers
                     .Replace("{{NOMBRE_USUARIO}}", result.Nombre)
                     .Replace("{{NUEVA_CONTRASENA}}", nuevaContrasena);
 
-                EnviarCorreo(result.CorreoElectronico, "Recuperar Acceso", htmlFinal);
+                generales.EnviarCorreo(result.CorreoElectronico, "Recuperar Acceso", htmlFinal);
                 return RedirectToAction("Login", "Home");
 
             }
@@ -176,47 +182,6 @@ namespace KN_Web.Controllers
 
 
 
-        private string GenerarContrasena()
-        {
-            int longitud = 8;
-            const string letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            StringBuilder resultado = new StringBuilder(longitud);
-
-            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
-            {
-                byte[] bytes = new byte[1];
-                for (int i = 0; i < longitud; i++)
-                {
-                    rng.GetBytes(bytes);
-                    int index = bytes[0] % letras.Length;
-                    resultado.Append(letras[index]);
-                }
-            }
-
-            return resultado.ToString();
-        }
-        //void: no devuelve ningún valor, se utiliza para métodos que realizan una acción pero no necesitan retornar información.
-        //este método se encarga de enviar un correo electrónico al destinatario con el asunto y cuerpo especificados
-        private void EnviarCorreo(string destinatario, string asunto, string cuerpo)
-        {
-            var cuentaCorreo = ConfigurationManager.AppSettings["CuentaCorreo"];
-            var contrasenaCorreo = ConfigurationManager.AppSettings["contrasenaCorreo"];
-
-            using (MailMessage mail = new MailMessage())
-            {
-                mail.From = new MailAddress(cuentaCorreo);
-                mail.To.Add(destinatario);
-                mail.Subject = asunto;
-                mail.Body = cuerpo;
-                mail.IsBodyHtml = true;
-
-                using (SmtpClient smtp = new SmtpClient("smtp.office365.com", 587))
-                {
-                    smtp.Credentials = new NetworkCredential(cuentaCorreo, contrasenaCorreo);
-                    smtp.EnableSsl = true;
-                    smtp.Send(mail);
-                }
-            }
-        }
+      
     }
 }
