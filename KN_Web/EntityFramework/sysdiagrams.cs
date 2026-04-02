@@ -12,13 +12,12 @@ namespace KN_Web.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class tServicio
+    public partial class sysdiagrams
     {
-        public int Consecutivo { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public decimal Precio { get; set; }
-        public int Estado { get; set; }
-        public string Video { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

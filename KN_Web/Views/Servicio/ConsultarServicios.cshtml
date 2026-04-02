@@ -3,8 +3,11 @@
 
 <div class="row">
     <div class="col-12">
-        <div class="section-title mb-3">
+        <div class="section-title mb-3 d-flex justify-content-between align-items-center">
             <h4>Servicios</h4>
+            <a href="@Url.Action("AgregarServicio","Servicio")" class="btn btn-outline-secondary"> 
+            Agregar + </a>
+
         </div>
     </div>
 </div>
@@ -19,7 +22,7 @@
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Estado</th>
-                        <th>Imagen</th>
+                        <th>Video</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,11 +33,15 @@
                             <td>@item.Nombre</td>
                             <td>₡ @item.Precio.ToString("N2")</td>
                             <td>@(item.Estado == 1 ? "Activo" : "Inactivo")</td>
-                            <td>@item.Imagen</td>
+                            <td><iframe width="200" height="125" frameborder="0" allowfullscreen style="display:block;" src="@item.Video"></iframe></td>
                             <td>
-                                <a class="btn btn-danger btn-sm" title="Eliminar"
+                                <a class="btn btn-danger btn-sm" title="Cambiar Estado"
                                    href="@Url.Action("CambiarEstado","Servicio", new { q = @item.Consecutivo })">
-                                    <i class="fa-solid fa-trash"></i>
+                                    <i class="fa-solid fa-refresh"></i>
+                                </a>
+                                <a class="btn btn-danger btn-sm" title="Actualizar"
+                                   href="@Url.Action("ActualizarServicio","Servicio", new { q = @item.Consecutivo })">
+                                    <i class="fa-solid fa-edit"></i>
                                 </a>
                             </td>
                         </tr>

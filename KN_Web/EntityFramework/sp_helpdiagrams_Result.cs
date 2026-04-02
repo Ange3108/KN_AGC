@@ -10,15 +10,13 @@
 namespace KN_Web.EntityFramework
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tServicio
+    public partial class sp_helpdiagrams_Result
     {
-        public int Consecutivo { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public decimal Precio { get; set; }
-        public int Estado { get; set; }
-        public string Video { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

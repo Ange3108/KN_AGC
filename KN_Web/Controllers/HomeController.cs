@@ -22,7 +22,11 @@ namespace KN_Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            using (var context = new KN_DBEntities())
+            {
+                var servicios = context.tServicio.Where(p => p.Estado == 1).ToList();
+                return View(servicios);
+            }
         }
 
         #region Iniciar Sesión
@@ -79,7 +83,7 @@ namespace KN_Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registro(UsuarioModel model)
+        public ActionResult Registro(UsuarioModel modelo)
         {
 
             //delimitador de la base de datos, para abrir la conexión, realizar las operaciones y cerrar la conexión
@@ -101,7 +105,7 @@ namespace KN_Web.Controllers
                 
 
                 //procedimiento almacenado
-                var result = context.RegistrarUsuario(model.Identificacion, model.Contrasena, model.Nombre, model.CorreoElectronico);
+                var result = context.RegistrarUsuario(modelo.Identificacion, modelo.Contrasena, model.Nombre, model.CorreoElectronico);
 
                 if (result <= 0)
                 {

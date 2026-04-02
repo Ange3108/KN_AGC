@@ -150,6 +150,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EntityFramework\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityFramework\tRol.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -197,6 +206,7 @@
     <Content Include="Template\Images\shape.svg" />
     <Content Include="Template\Images\signin-image.svg" />
     <Content Include="Template\js\bootstrap.bundle.min.js" />
+    <Content Include="Template\js\funciones\Servicio.js" />
     <Content Include="Template\js\funciones\cambiarPerfil.js" />
     <Content Include="Template\js\Chart.min.js" />
     <Content Include="Template\js\dynamic-pie-chart.js" />
@@ -212,6 +222,7 @@
     <Content Include="Template\js\polyfill.js" />
     <Content Include="Template\js\world-merc.js" />
     <Content Include="Template\RecuperarContrasena.html" />
+    <Content Include="Uploads\9.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -248,6 +259,8 @@
     <Content Include="Views\Home\RecuperarContrasena.cshtml" />
     <Content Include="Views\Home\Registro.cshtml" />
     <Content Include="Views\Seguridad\CambiarPerfil.cshtml" />
+    <Content Include="Views\Servicio\AgregarServicio.cshtml" />
+    <Content Include="Views\Servicio\ActualizarServicio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

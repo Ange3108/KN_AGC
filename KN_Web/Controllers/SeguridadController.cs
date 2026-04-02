@@ -25,16 +25,16 @@ namespace KN_Web.Controllers
         [HttpPost]
         //es un formulario para cambiar la contraseña
         //valida que el modelo sea correcto, es decir, que las contraseñas coincidan y cumplan con los requisitos de seguridad
-        public ActionResult CambiarAcceso(SeguridadModel model)
+        public ActionResult CambiarAcceso(SeguridadModel modelo)
         {
             if (!ModelState.IsValid)
-                return View(model);
+                return View(modelo);
 
 
             using (var context = new KN_DBEntities())
             {
                 var consecutivoSesion = int.Parse(Session["Consecutivo"].ToString());
-                var actualizacion = context.ActualizarContrasena(model.ContrasenaNueva, consecutivoSesion);
+                var actualizacion = context.ActualizarContrasena(modelo.ContrasenaNueva, consecutivoSesion);
 
                 if (actualizacion <= 0)
                 {
@@ -82,7 +82,7 @@ namespace KN_Web.Controllers
 
         [HttpPost]
         //HttpPostedFileBase le pasa la imagen al controlador, el nombre debe coincidir con el input del formulario en la vista, en este caso "ImagenUsuario"
-        public ActionResult CambiarPerfil(PerfilModel model, HttpPostedFileBase ImagenUsuario)
+        public ActionResult CambiarPerfil(PerfilModel modelo, HttpPostedFileBase ImagenUsuario)
         {
 
 
@@ -94,9 +94,9 @@ namespace KN_Web.Controllers
                 if (result != null)
                 {
                     //esto es como el dto, se asignan los valores del modelo a la entidad que se va a actualizar en la base de datos
-                    result.Identificacion = model.Identificacion;
-                    result.Nombre = model.Nombre;
-                    result.CorreoElectronico = model.CorreoElectronico;
+                    result.Identificacion = modelo.Identificacion;
+                    result.Nombre = modelo.Nombre;
+                    result.CorreoElectronico = modelo.CorreoElectronico;
 
                     if (ImagenUsuario != null && ImagenUsuario.ContentLength > 0)
                     {
@@ -123,8 +123,8 @@ namespace KN_Web.Controllers
                 //Actualizamos la información de la sesión(las variables de session) con los nuevos datos del perfil
 
 
-                Session["Nombre"] = model.Nombre;
-                Session["CorreoElectronico"] = model.CorreoElectronico;
+                Session["Nombre"] = modelo.Nombre;
+                Session["CorreoElectronico"] = modelo.CorreoElectronico;
 
                 if (ImagenUsuario != null && ImagenUsuario.ContentLength > 0)
                     Session["ImagenUsuario"] = result.ImagenUsuario;

@@ -1,2 +1,49 @@
-﻿ <h2>Index</h2>
+﻿@model List<KN_Web.EntityFramework.tServicio>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="section-title mb-3">
+            <h4>Nuestros Servicios</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-md-6 col-12">
+            <div class="card-style h-100">
+
+
+                <div class="mb-3" style="border-radius: 6px; overflow: hidden;">
+                    <iframe width="100%" height="200" src="@item.Video"
+                            frameborder="0" allowfullscreen
+                            style="display:block;">
+                    </iframe>
+                </div>
+
+                <h5 class="fw-600 mb-2">@item.Nombre</h5>
+                <p class="text-sm mb-3" style="color: #5d657b;">@item.Descripcion</p>
+
+                <div class="d-flex justify-content-between align-items-center mt-auto">
+                    <span class="fw-600" style="color: #365CF5; font-size: 18px;">
+                        &#x20A1; @item.Precio.ToString("N2")
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="col-12">
+            <div class="card-style text-center py-5">
+                <i class="fa-solid fa-box-open fa-3x mb-3" style="color: #c0c0c0;"></i>
+                <p class="text-muted">No hay servicios disponibles en este momento.</p>
+            </div>
+        </div>
+    }
+</div>
 

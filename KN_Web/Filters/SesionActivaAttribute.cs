@@ -12,7 +12,7 @@ namespace KN_Web.Filters
         {
             var session = filterContext.HttpContext.Session;
 
-            if (session["Nombre"] == null)
+            if (session["IdUsuario"] == null)
             {
                 filterContext.Result = new RedirectToRouteResult(
                     new System.Web.Routing.RouteValueDictionary(new
